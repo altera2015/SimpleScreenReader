@@ -1,0 +1,128 @@
+﻿{
+  "filters": [
+    {
+		"name": "Remove Empty digits",
+		"find": "[\\r\\n]\\d+[\\r\\n]",
+		"replace": "\n"
+	},
+    {
+		"name": "Remove Link",
+		"find": "https?://(www.)?([^/]+)\\S+",
+		"replace": "$2"
+	},
+	{
+	    "name": "Remove Reply",
+		"find": "·\\s*Reply\\s*·\\s*\\d+[dmhwy]( · Edited)?",
+		"replace": ""
+	},
+	{
+	    "name": "Remove Reply",
+		"find": "·\\s*Reply\\s*·\\s*See Translation\\s*·\\s*\\d+[dmhwy]( · Edited)?",
+		"replace": ""
+	},		
+	{
+		"name": "Remove Report",
+		"find": "Hide or report this",
+		"replace": ""
+	},
+	{
+		"name": "Remove # Replies",
+		"find": "\\d+ Replies\\s*[\r\n]+\\s*\\d+[hmdwy]",
+		"replace" : ""
+	},	
+	{
+		"name": "Remove # Replies",
+		"find": "\\d+ Reply\\s*[\r\n]+\\s*\\d+[hmdwy]",
+		"replace" : ""
+	},		
+	{
+		"name": "Remove # Replies",
+		"find": "\\d+ Replies",
+		"replace" : ""
+	},
+	{
+		"name": "Remove # Reply",
+		"find": "\\d+ Reply",
+		"replace" : ""
+	},
+	{
+		"name": "Remove Like",
+		"find": "Like",
+		"replace" : ""
+	},	
+	{
+		"name": "Remove No Photo Description",
+		"find": "No photo description available.",
+		"replace": ""		
+	},
+	{
+		"name" : "Remove more replies",
+		"find" : "View \\d+ more replies",
+		"replace": ""
+	},
+	{
+		"name" : "Remove more replies",
+		"find" : "View \\d+ more reply",
+		"replace": ""
+	},
+	{
+		"name" : "Remove Image Description",
+		"find" : "Image may contain: [^\r\n]*",
+		"replace": ""
+	},
+	{
+		"name": "",
+		"find": "Write a comment...",
+		"replace": ""
+	},
+	{
+		"name": "Remove # comments",
+		"find": "\\d+ Comments?",
+		"replace": ""
+	},	
+	{
+		"name": "Remove # comments",
+		"find": "\\d+ Shares?",
+		"replace": ""
+	},		
+	{
+		"name": "remove comments",
+		"find": "(Comments)?(Share)?(Comment)?",
+		"replace": ""
+	},
+	{
+		"name": "Rate this translation",
+		"find": "Rate this translation",
+		"replace": ""
+	},
+	{
+		"name": "See original",
+		"find": " · See original  · ",
+		"replace": ""
+	},
+	{
+		"name": "Remove View more comments",
+		"find": "View \\d+ more comments?"
+	},
+	{
+		"name": "",
+		"find": "View previous comments\\s*[\\r\\n]+\\s*\\d+ of \\d+\\s*[\\r\\n]"		
+	},
+	{
+		"name": "Caroline Be",
+		"find": "[\\r\\n]Caroline Be[\\r\\n]"		
+	},
+	{
+		"name": "Numbahs",
+		"find": "[\\r\\n]\\+?\\d+\\s*[\\r\\n]"		
+	},
+	{
+		"name": "Date",
+		"find": "(January)?(February)?(March)?(April)?(May)?(June)?(July)?(August)?(September)?(October)?(November)?(December)? \\d+, \\d{4}\\s*·\\s*[\\r\\n]"
+	},
+	{
+		"name": "Remove Duplicate Users",
+		"class": "DuplicateUser"
+	}
+  ]
+}

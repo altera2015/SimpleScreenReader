@@ -28,6 +28,8 @@ public:
 
     bool load();
     bool save();
+
+    std::wstring getHomeDir() const;
 };
 
 #endif

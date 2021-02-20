@@ -16,7 +16,7 @@ bool SmartFilter::load(const std::wstring& config)
 	std::ifstream ifs(config, std::ios::binary);
 	if (!ifs.is_open())
 	{
-		debugStr(L"Failed to open config file" + config + L"\n");
+		debugStr(L"Failed to open config file: '" + config + L"'\n");
 		return false;
 	}
 
@@ -28,7 +28,7 @@ bool SmartFilter::load(const std::wstring& config)
 	}
 	catch (nlohmann::json::parse_error pe)
 	{
-		debugStr(L"Failed to parse :" + config + L"\n");
+		debugStr(L"Failed to parse :'" + config + L"'\n");
 		debugStr(std::string(pe.what()) + "\n");
 		return false;
 	}

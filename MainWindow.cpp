@@ -384,7 +384,8 @@ BOOL MainWindow::onRefreshSpeakSmart(HWND wnd)
 {
     if (!m_SmartFilter.load(gSettings.filterLocation()))
     {
-        MessageBox(0, L"Unable to load Smart Filters.", L"Parse Failed", MB_OK | MB_ICONEXCLAMATION);
+        std::wstring err = L"Unable to load Smart Filters from: " + gSettings.filterLocation();
+        MessageBox(0, err.c_str() , L"Parse Failed", MB_OK | MB_ICONEXCLAMATION);
     }
     return TRUE;
 }
@@ -724,7 +725,8 @@ MainWindow::MainWindow(LPSTR cmdLine) :
 
     if (!m_SmartFilter.load(gSettings.filterLocation()))
     {
-        MessageBox(0, L"Unable to load SmartFilters.", L"Filter Startup failed", MB_OK | MB_ICONEXCLAMATION);
+        std::wstring err = L"Unable to load Smart Filters from: " + gSettings.filterLocation();
+        MessageBox(0, err.c_str(), L"Parse Failed", MB_OK | MB_ICONEXCLAMATION);
     }
 }
 

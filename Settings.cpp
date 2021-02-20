@@ -1,6 +1,8 @@
 #include "Settings.h"
 
 #include <Windows.h>
+#include <Shlobj.h>
+
 #include "CommonFunctions.h"
 
 static bool getRegistry(HKEY key, LPCWSTR value, std::wstring & data, const std::wstring & def = L"")
@@ -22,8 +24,9 @@ static bool getRegistry(HKEY key, LPCWSTR value, std::wstring & data, const std:
         return false;
     }
 
-    if (data.length() == 0)
+    if (data.compare(L"") == 0)
     {
+        data = def;
         return true;
     }
 
@@ -83,7 +86,8 @@ static bool setRegistryKey(HKEY key, LPCWSTR value, int data)
 
 
 Settings::Settings() : 
-    m_Rate(0)
+    m_Rate(0),
+    m_FilterLocation(getHomeDir() + L"\\smartFilter.json")
 {
 }
 
@@ -122,7 +126,7 @@ bool Settings::load()
     }
 
     getRegistry(key, L"voice", m_Voice);
-    getRegistry(key, L"rate", m_Rate);
+    getRegistry(key, L"rate", m_Rate);    
     getRegistry(key, L"filterLocation", m_FilterLocation);
 
     RegCloseKey(key);
@@ -143,6 +147,15 @@ bool Settings::save()
     setRegistryKey(key, L"filterLocation", m_FilterLocation);
     RegCloseKey(key);
     return true;
+}
+
+std::wstring Settings::getHomeDir() const
+{
+    WCHAR path[MAX_PATH];
+    if (SUCCEEDED(SHGetFolderPathW(NULL, CSIDL_PROFILE, NULL, 0, path))) {
+        return std::wstring(path);
+    }
+    return std::wstring();
 }
 
 
